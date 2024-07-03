@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://kit.fontawesome.com/6a3724cd2e.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+        <div class="header-text">
+        <p>Hello My name is <h1>Hanushree Bawa</h1>I am a Student</p>
+    </div>
+    <!------------------------- about ----------------------------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-01">
+                    <img src="564a5cd53632c933a3aaed99c8997e06.jpg">
+                </div>
+                <div class="about-col-02">
+                    <h1 class="sub-title">About</h1>
+                    <p>Hello...I am a Second year BSC(Computer science) Student.
+                        I have completed my schooling from P.A.B.V.High school. </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('Education')">Education</p>
+                        <p class="tab-links" onclick="opentab('Hobbies')">Hobbies</p>
+                        <p class="tab-links" onclick="opentab('Skills')">Skills</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="Education">
+                        <ul>
+                            <li><span>2020</span><br>Passed SSC board</li>
+                            <li><span>2023</span><br>Passed HSC board</li>
+                            <li><span>2024-Current</span><br>Currently in Second year of bsc cs</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="Hobbies">
+                        <ul>
+                            <li><span>Reading</span></li>
+                            <li><span>Painting</span></li>
+                            <li><span>Cooking</span></li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="Skills">
+                        <ul>
+                            <li><span>Web developer</span><br>Web app development</li>
+                            <li><span>Web designer</span><br>Produciton and maintainance of website</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------services---------------------->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-brands fa-web-awesome"></i>
+                    <h2>Web design</h2>
+                    <p>Web design involves creating the <br> visual elements and layout of a website,<br> while coding involves translating these<br> designs into a functional website <br>using programming languages like<br> HTML, CSS, and JavaScript.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-laptop-file"></i>
+                    <h2>UI/UX design</h2>
+                    <p>UI/UX design, or user interface<br> and user experience design,<br> are related but distinct roles in the <br>development of a product or service</p>
+                </div>
+                <div>
+                    <i class="fa-brands fa-app-store-ios"></i>
+                    <h2>App design</h2>
+                    <p> App design is the look and feel <br>of a mobile application. This includes all<br> of the visual elements and interactive <br>elements that impact how the app functions.<br> Mobile app design combines two concepts - <br>UI and UX.</p>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <!--------------------------Contact------------------------------->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-right">
+                    <h1 class="sub-title">Contact</h1>
+                    <p><i class="fa-solid fa-envelope"></i>hanushreebawa@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>88306 XXXXX</p>
+                    <div class="social-icons">
+                    <a href="https://instagram.com/hanushree_here"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com/Hanushree Bawa"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://facebook.com/hanushree_here"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form id="contact-form">
+                        <input type="text" name="user_name" placeholder="Your Name" required>
+                        <input type="email" name="user_email" placeholder="Your Email" required>
+                        <textarea name="message" rows="7" placeholder="Your Message"></textarea>
+                        <button class="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for (let i = 0; i < tabcontents.length; i++) {
+                const element = tabcontents[i];
+                element.classList.remove('active-tab')
+            }
+            document.getElementById(tabname).classList.add('active-tab')
+        }
+
+        (function() {
+         emailjs.init({
+              publicKey: "d3A6csm9n3OOIkUYX",
+            });
+        })();
+
+        let form = document.getElementById('contact-form')
+        form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.send("service_mc4udk4","template_88j3lza",{
+                    to_name: "hanushreebawa@gmail.com",
+                    from_name: form.user_name.value,
+                    message: form.message.value + " Here's my mail ID"+form.user_email.value,
+                }).then(()=>{  alert('Sent!');});
+           
+        })
+
+    </script>
+</body>
+</html>
